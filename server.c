@@ -14,8 +14,8 @@
 #include <unistd.h>
 
 typedef struct s_data {
-    unsigned char current_char;  // Das Zeichen das wir bauen
-    int           bit_count;     // Wie viele Bits haben wir schon?
+    unsigned char current_char;
+    int           bit_count;
 } t_data;
 
 t_data g_data = {0, 0};
@@ -58,21 +58,12 @@ void ft_putnbr(int n)
 
 void handler(int sig)
 {
-    // Wenn SIGUSR2, ist das Bit eine 1
     if (sig == SIGUSR2)
         g_data.current_char |= (1 << g_data.bit_count);
-    
-    // Wenn SIGUSR1, ist das Bit eine 0
-    // → Nichts tun, Bit bleibt 0
-    
     g_data.bit_count++;
-    
-    // Haben wir 8 Bits = 1 komplettes Zeichen?
     if (g_data.bit_count == 8)
     {
-        write(1, &g_data.current_char, 1);  // ← AUSGABE!
-        
-        // Reset für nächstes Zeichen
+        write(1, &g_data.current_char, 1);
         g_data.current_char = 0;
         g_data.bit_count = 0;
     }
@@ -83,13 +74,13 @@ int main(void)
     int pid;
 
     pid = getpid();
-    signal(SIGUSR1, handler); // Bit 0
-    signal(SIGUSR2, handler); // Bit 1
+    signal(SIGUSR1, handler);
+    signal(SIGUSR2, handler);
     ft_putstr("Server PID: ");
     ft_putnbr(pid);
     ft_putstr("\n");
     while (1)
-        pause(); // Warten auf Signale
+        pause();
     
     return 0;
 }
