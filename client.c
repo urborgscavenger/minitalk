@@ -41,13 +41,14 @@ void	ft_send(int pit, char m)
 	int i;
 
 	i = 0;
-	while (m < 8)
+	while (i < 8)
 	{
 		if (m & 1)
 			kill(pit, SIGUSR2);
 		else
-			kill(pit, SIGUSR2);
-		
+			kill(pit, SIGUSR1);
+		usleep(100);
+		m = m >> 1;
 		i++;
 	}
 }
@@ -83,7 +84,7 @@ int main(int argc, char **argv)
 	pid = ft_atoi(argv[1]);
 	while (argv[2][str_counter])
 	{
-		ft_send(pid, str_counter);
+		ft_send(pid, argv[2][str_counter]);
 		str_counter++;	
 	}
 }

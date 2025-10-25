@@ -20,9 +20,11 @@ $(NAME_CLIENT): $(OBJ_CLIENT)
 
 clean:
 	rm -f $(OBJ_SERVER) $(OBJ_CLIENT)
+	@echo "Cleaned almost everything."
 
 fclean: clean
 	rm -f $(NAME_SERVER) $(NAME_CLIENT)
+	@echo "Cleaned everything."
 
 re: fclean all
 
