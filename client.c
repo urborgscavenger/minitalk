@@ -6,7 +6,7 @@
 /*   By: mbauer <mbauer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 15:38:32 by mbauer            #+#    #+#             */
-/*   Updated: 2025/10/26 12:47:41 by mbauer           ###   ########.fr       */
+/*   Updated: 2025/10/26 16:04:04 by mbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	ft_putstr(char *str)
 		ft_putchar(str[i]);
 		i++;
 	}
+	ft_putchar('\n');
 }
 
 int	main(int argc, char **argv)
