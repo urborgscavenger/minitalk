@@ -6,7 +6,7 @@
 /*   By: mbauer <mbauer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 15:38:32 by mbauer            #+#    #+#             */
-/*   Updated: 2025/10/25 18:33:23 by mbauer           ###   ########.fr       */
+/*   Updated: 2025/10/26 12:47:41 by mbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_atoi(const char *str)
 
 void	ft_send(int pit, char m)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 8)
@@ -63,28 +63,28 @@ void	ft_putstr(char *str)
 	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		ft_putchar(str[i]);
 		i++;
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int	pid;
 	int	str_counter;
-	
+
 	str_counter = 0;
-	if(argc != 3)
+	if (argc != 3)
 	{
-        ft_putstr("invalid input!\n");
+		ft_putstr("invalid input!\n");
 		return (0);
-    }
+	}
 	pid = ft_atoi(argv[1]);
 	while (argv[2][str_counter])
 	{
 		ft_send(pid, argv[2][str_counter]);
-		str_counter++;	
+		str_counter++;
 	}
 }
